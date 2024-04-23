@@ -1,1 +1,2 @@
 //deneme github
+// bağlılık kontrolleri 
