@@ -1,42 +1,86 @@
-//deneme github
-// bağlılık kontrolleri 
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-
-typedef struct {
-  int a;
-  int b;
-  int c;
-} Point;
-
-Point *rotate(Point *p, int angle) {
-  int temp;
-  if (angle % 90 != 0) {
-    return NULL;
-  }
-  angle /= 90;
-  while (angle--) {
-    temp = p->a;
-    p->a = p->b;
-    p->b = -p->c;
-    p->c = temp;
-  }
-  return p;
+#include <string.h>
+// Yazma işlemini gerçekleştiren fonksiyon
+void yazma_islemi(char *komut, FILE *cikisDosyasi) {
+    char *ptr = komut;
+    while (*ptr != '\0') {
+        if (*ptr == ':') {
+            ptr++;
+            continue;
+        }
+        if (*ptr == ' ') {
+            ptr++;
+            continue;
+        }
+        if (*ptr >= '0' && *ptr <= '9') {
+            int sayi = atoi(ptr);
+            while (*ptr >= '0' && *ptr <= '9') {
+                ptr++;
+            }
+            if (*ptr == ' ') {
+                ptr++;
+            }
+            if (*ptr == 'a') {
+                for (int i = 0; i < sayi; i++) {
+                    if (fprintf(cikisDosyasi, "a") < 0) {
+                        perror("Çıktı dosyasına yazarken hata oluştu");
+                        exit(EXIT_FAILURE);
+                    }
+                }
+            } else if (*ptr == 'b') {
+                if (fprintf(cikisDosyasi, " ") < 0) {
+                    perror("Çıktı dosyasına yazarken hata oluştu");
+                    exit(EXIT_FAILURE);
+                }
+            } else if (*ptr == 'k') {
+                for (int i = 0; i < sayi; i++) {
+                    if (fprintf(cikisDosyasi, "k") < 0) {
+                        perror("Çıktı dosyasına yazarken hata oluştu");
+                        exit(EXIT_FAILURE);
+                    }
+                }
+            } else if (*ptr == 'u') {
+                if (fprintf(cikisDosyasi, "\n") < 0) {
+                    perror("Çıktı dosyasına yazarken hata oluştu");
+                    exit(EXIT_FAILURE);
+                }
+            }
+        } else {
+            fprintf(stderr, "Hatalı komut: %c\n", *ptr);
+            exit(EXIT_FAILURE);
+        }
+    }
 }
 
-int main() {
-  Point point = {1, 2, 3};
-  Point *rotated = rotate(&point, 180);
 
-  if (rotated != NULL) {
-    printf("Döndürülmüş nokta: (%d, %d, %d)\n", rotated->a, rotated->b, rotated->c);
-  } else {
-    printf("Nokta döndürülemedi.\n");
-  }
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Kullanım: %s <giris_dosyasi> <cikis_dosyasi>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
-  free(rotated); // Belleği serbest bırakmayı unutmayın!
+    FILE *girisDosyasi = fopen(argv[1], "r");
+    if (girisDosyasi == NULL) {
+        perror("Giris dosyasi acilirken hata olustu");
+        return EXIT_FAILURE;
+    }
 
-  return 0;
+    FILE *cikisDosyasi = fopen(argv[2], "w");
+    if (cikisDosyasi == NULL) {
+        perror("Cikis dosyasi acilirken hata olustu");
+        fclose(girisDosyasi);
+        return EXIT_FAILURE;
+    }
+
+    char satir[100];
+    while (fgets(satir, sizeof(satir), girisDosyasi) != NULL) {
+        if (strncmp(satir, "yaz:", 4) == 0) {
+            yazma_islemi(satir + 4, cikisDosyasi);
+        }
+    }
+
+    fclose(girisDosyasi);
+    fclose(cikisDosyasi);
+    return EXIT_SUCCESS;
 }
