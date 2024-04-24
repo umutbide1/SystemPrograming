@@ -1,1 +1,1 @@
-yaz:5 a 1 \b 8 k 1 \n 6 u 
+yaz:10 a 1 \b 8 k 1 \n 6 u 

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+// 
 void yazma_islemi(const char *komut, FILE *cikisDosyasi) {
     const char *ptr = komut;
     while (*ptr != '\0') {
@@ -32,7 +32,9 @@ void yazma_islemi(const char *komut, FILE *cikisDosyasi) {
                     fprintf(cikisDosyasi, "k");
                 }
             } else if (*ptr == 'u') {
-                fprintf(cikisDosyasi, "\n");
+                for (int i = 0; i < sayi; i++) {
+                    fprintf(cikisDosyasi, "u");
+                }
             }
         } else {
             fprintf(stderr, "Hatalı komut: %c\n", *ptr);
@@ -40,6 +42,7 @@ void yazma_islemi(const char *komut, FILE *cikisDosyasi) {
         }
     }
 }
+
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
