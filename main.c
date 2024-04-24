@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Yazma işlemini gerçekleştiren fonksiyon
-void yazma_islemi(char *komut, FILE *cikisDosyasi) {
-    char *ptr = komut;
+
+void yazma_islemi(const char *komut, FILE *cikisDosyasi) {
+    const char *ptr = komut;
     while (*ptr != '\0') {
         if (*ptr == ':') {
             ptr++;
@@ -23,28 +23,16 @@ void yazma_islemi(char *komut, FILE *cikisDosyasi) {
             }
             if (*ptr == 'a') {
                 for (int i = 0; i < sayi; i++) {
-                    if (fprintf(cikisDosyasi, "a") < 0) {
-                        perror("Çıktı dosyasına yazarken hata oluştu");
-                        exit(EXIT_FAILURE);
-                    }
+                    fprintf(cikisDosyasi, "a");
                 }
             } else if (*ptr == 'b') {
-                if (fprintf(cikisDosyasi, " ") < 0) {
-                    perror("Çıktı dosyasına yazarken hata oluştu");
-                    exit(EXIT_FAILURE);
-                }
+                fprintf(cikisDosyasi, " ");
             } else if (*ptr == 'k') {
                 for (int i = 0; i < sayi; i++) {
-                    if (fprintf(cikisDosyasi, "k") < 0) {
-                        perror("Çıktı dosyasına yazarken hata oluştu");
-                        exit(EXIT_FAILURE);
-                    }
+                    fprintf(cikisDosyasi, "k");
                 }
             } else if (*ptr == 'u') {
-                if (fprintf(cikisDosyasi, "\n") < 0) {
-                    perror("Çıktı dosyasına yazarken hata oluştu");
-                    exit(EXIT_FAILURE);
-                }
+                fprintf(cikisDosyasi, "\n");
             }
         } else {
             fprintf(stderr, "Hatalı komut: %c\n", *ptr);
@@ -52,7 +40,6 @@ void yazma_islemi(char *komut, FILE *cikisDosyasi) {
         }
     }
 }
-
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
