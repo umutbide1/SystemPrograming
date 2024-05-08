@@ -72,5 +72,7 @@ int main(int argc, char *argv[]) {
 
     fclose(girisDosyasi);
     fclose(cikisDosyasi);
+
+    
     return EXIT_SUCCESS;
 }
