@@ -1,5 +1,3 @@
-/* Libraries for fields, doubly-linked lists and red-black trees.
-   Copyright (C) 2018 James S. Plank */
 
 #ifndef	JVAL_H
 #define	JVAL_H

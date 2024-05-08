@@ -3,11 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <string.h>
 #include <ctype.h>
 #include "fields.h"
-
+#include <io.h>
+#include <windows.h>
 #define talloc(ty, sz) (ty *) malloc (sz * sizeof(ty))
 
 static IS make_inputstruct(const char *filename, char *key)
