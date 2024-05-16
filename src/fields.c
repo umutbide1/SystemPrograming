@@ -10,7 +10,7 @@
 #include <io.h>
 #include <windows.h>
 #define talloc(ty, sz) (ty *) malloc (sz * sizeof(ty))
-
+// aslında bütün her şey tam gibi ama linuxla ilgili bir durum var gibi 
 static IS make_inputstruct(const char *filename, char *key)
                          /* "f" for regular file or stdin if filename is NULL */
                          /* "p" if filename is a command for popen */

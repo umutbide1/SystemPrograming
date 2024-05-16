@@ -13,6 +13,7 @@
  * the first item in list l is l->flink.  If l is  
  * empty, then l->flink = l->blink = l.            
  ---------------------------------------------------------------------*/
+// neden çalışmıyor anlamaya çalışıyorum.
 
 Dllist new_dllist()
 {
