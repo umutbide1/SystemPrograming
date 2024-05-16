@@ -1,7 +1,7 @@
 /* Libraries for fields, doubly-linked lists and red-black trees.
    Copyright (C) 2018 James S. Plank */
 
-
+// kütüphane string işlemlerini kolyalaştıran harika bir kütüphane 
 #include <stdio.h>
 #include <stdlib.h>
 //#include <unistd.h>
