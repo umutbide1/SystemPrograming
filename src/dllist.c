@@ -8,14 +8,9 @@
 //#include <unistd.h>
 #include "dllist.h"
 
-/*---------------------------------------------------------------------
- * PROCEDURES FOR MANIPULATING DOUBLY LINKED LISTS 
- * Each list contains a sentinal node, so that     
- * the first item in list l is l->flink.  If l is  
- * empty, then l->flink = l->blink = l.            
- ---------------------------------------------------------------------*/
-// neden çalışmıyor anlamaya çalışıyorum.
 
+// neden çalışmıyor anlamaya çalışıyorum.
+// bu kütüphaneyi entegre etmeyi Abdullah hocaya bir soralım.
 Dllist new_dllist()
 {
   Dllist d;
