@@ -72,14 +72,14 @@ int main() {
     } else {
         printf("Cursor hiçbir elemanı göstermiyor.\n");
     }
-
+    // cursor islemleri cok dikkatli yapılmali anil buralara dikkat et
     // Çıkış dosyasına yaz
     FILE *out = fopen("cikis.dat", "w");
     if (out == NULL) {
         perror("cikis.dat açılamadı");
         exit(1);
     }
-    dll_traverse(tmp, list) {
+    dll_traverse(tmp, list) {  // bahsettigim o dllist ve fonkiyonları kısmı burası da 
         char *content = (char *) tmp->val.v;
         for (int i = 0; content[i] != '\0'; i++) {
             if (content[i] == '\\' && content[i + 1] == 'b') {
@@ -99,7 +99,7 @@ int main() {
     fclose(out);
 
     // Temizlik
-    free_dllist(list);
+    free_dllist(list);   // c de en sıkıntılı yerler buralara dikkat et bellek sızıntılarının önüne geç 
     jettison_inputstruct(is);
 
     return 0;
