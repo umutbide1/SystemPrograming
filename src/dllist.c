@@ -1,7 +1,7 @@
 /* Libraries for fields, doubly-linked lists and red-black trees.
    Copyright (C) 2018 James S. Plank */
 // dlist kütüphanesi de bir çift yönlü bağlı liste yönetmek için harika bir kütüphane
-
+// bütün fonksiyonlar harika bir biçimde şekillendirilmiş ve kullanılması çok kolay..
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
