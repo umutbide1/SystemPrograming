@@ -1,0 +1,5 @@
+Bu odevde bizden gercek zamanli bir isletim sistemi benzetimi yapmamızı istiyordu.
+Libfdr kütüphanesi kullanimi odaklanmisti
+Dinamik bir liste yönetimi istenmisti
+Ogretici bir c odevi
+giris.dat dosyasindan okunan ve kurallari belli olan komut satirlarini isleterek cikis.dat dosyasina yazilmasi isteniyordu
